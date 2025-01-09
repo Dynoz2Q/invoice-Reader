@@ -81,10 +81,9 @@
       background-color: black;
     }
 
-    #video {
+    video {
       width: 100%;
       height: auto;
-      display: block;
     }
 
     .scanner-box {
@@ -101,7 +100,7 @@
     .scanner-box::before {
       content: 'ضع الباركود داخل المربع';
       position: absolute;
-      top: 0;
+      top: -20px;
       left: 50%;
       transform: translateX(-50%);
       color: white;
@@ -115,16 +114,13 @@
     <h1>📋 قارئ الفواتير</h1>
 
     <div class="button-container">
-      <button id="addBarcode">📎 إضافة باركود</button>
-      <input type="file" id="imageInput" class="file-input" accept="image/*">
       <button id="scanBarcode">📸 تصوير باركود</button>
-      <button id="downloadExcel">📥 تحميل Excel</button>
-      <button id="downloadPDF">📄 تحميل PDF</button>
+      <button id="addBarcode">📁 إضافة باركود</button>
+      <input type="file" id="imageInput" class="file-input" accept="image/*">
     </div>
 
-    <!-- عرض الكاميرا -->
     <div class="scanner-container" id="scannerContainer" style="display: none;">
-      <video id="video" autoplay></video>
+      <video id="camera"></video>
       <div class="scanner-box"></div>
     </div>
 
@@ -139,16 +135,16 @@
           <th>الضريبة</th>
           <th>الإجمالي</th>
           <th>رقم الفاتورة</th>
-          <th>⚙️ تحرير</th>
         </tr>
       </thead>
       <tbody id="invoiceTable">
         <!-- البيانات ستضاف هنا -->
       </tbody>
     </table>
+
+    <button id="saveButton">💾 حفظ</button>
   </div>
 
-  <!-- تحميل السكربت الجافا سكريبت -->
   <script type="module" src="script.js"></script>
 </body>
 </html>

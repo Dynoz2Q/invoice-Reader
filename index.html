@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>قارئ الفواتير</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    table {
+      width: 90%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    #invoiceTable tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    #invoiceTable tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #4CAF50;
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    /* تأثير مربع الباركود */
+    .scanner-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: black;
+    }
+
+    #video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .scanner-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 250px;
+      height: 250px;
+      border: 3px solid rgba(255, 255, 255, 0.8);
+      box-sizing: border-box;
+    }
+
+    .scanner-box::before {
+      content: 'ضع الباركود داخل المربع';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📋 قارئ الفواتير</h1>
+
+    <div class="button-container">
+      <button id="addBarcode">📎 إضافة باركود</button>
+      <input type="file" id="imageInput" class="file-input" accept="image/*">
+      <button id="scanBarcode">📸 تصوير باركود</button>
+      <button id="downloadExcel">📥 تحميل Excel</button>
+      <button id="downloadPDF">📄 تحميل PDF</button>
+    </div>
+
+    <!-- عرض الكاميرا -->
+    <div class="scanner-container" id="scannerContainer" style="display: none;">
+      <video id="video" autoplay></video>
+      <div class="scanner-box"></div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>تسلسل</th>
+          <th>الاسم التجاري</th>
+          <th>الرقم الضريبي</th>
+          <th>التاريخ</th>
+          <th>قبل الضريبة</th>
+          <th>الضريبة</th>
+          <th>الإجمالي</th>
+          <th>رقم الفاتورة</th>
+          <th>⚙️ تحرير</th>
+        </tr>
+      </thead>
+      <tbody id="invoiceTable">
+        <!-- البيانات ستضاف هنا -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- تحميل السكربت الجافا سكريبت -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
